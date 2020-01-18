@@ -59,6 +59,29 @@ bst<Key, T>::~bst() {
 
 template<typename Key, typename T>
 void bst<Key, T>::insert(const Key &key, const T &t) {
+    //const key key  
+    //const T value
+    node* insertNode = new node; 
+    node->key = key; 
+    node->value = t; 
+
+    if (root == nullptr) { 
+        insertNode = root;  
+    }
+    if (key == root->key) { 
+        root->value = t; 
+    }
+    //If key is less than the root note, recurse left. 
+    if (key < root->key) { 
+        root->left = insert(root->left, insertNode); 
+    }
+
+    //if the key is greater than the root node, recurse right 
+    else { 
+        root->right = insert(root->right, insertNode); 
+    }
+
+
 
 }
 
